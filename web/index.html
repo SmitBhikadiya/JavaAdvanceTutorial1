@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="static/javascript/jquery.min.js"></script>
+    <script type="text/javascript" src="static/javascript/indexJquery.js"></script>
+    
+    <style>
+
+        th {
+            text-align: left;
+        }
+        .sumbitbtn{
+            padding-top: 20px;
+        }
+        .sumbitbtn input{
+            width: 100px;
+        }
+        .div-register-form {
+            display:none;
+        }
+        .div-delete-form{
+            display:none;
+        }
+        
+
+        /*
+        * {
+            color: azure;
+        }
+
+        body {
+            background-color: rgb(45, 58, 58);
+            font-family: cursive;
+        }
+
+        .div-userform {
+            background-color: rgb(240, 50, 50);
+            padding: 5px;
+            height: 90vh;
+            margin: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }*/
+    </style>
+</head>
+
+<body>
+    <div class="div-buttons">
+        <button id="insertData">Insert Data</button>
+        <button id="deleteData">Delete Data</button>
+        <button id="updateData">Update Data</button>
+        <!--<form method="POST" action="ShowDataServlet">
+            <input type="submit" id="showData" value="ShowData">
+        </form>-->
+    </div>
+    <div class="form-div"></div>
+    <div class="div-register-form">
+        
+        <form action="NewUserServlet" method="POST">
+            <table>
+                <caption>
+                    <h1>User Registration</h1>
+                </caption>
+                <tr>
+                    <th>UserName: </th>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <th>Address: </th>
+                    <td><textarea name="address" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <th>Age: </th>
+                    <td><input type="number" name="age" value="18" step="1" min="18" max="50"></td>
+                </tr>
+                <tr>
+                    <th>Gender: </th>
+                    <td>
+                        <label>Male
+                            <input type="radio" name="gender" value="Male" checked />
+                        </label>
+                        <label>Female
+                            <input type="radio" name="gender" value="Female" />
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="sumbitbtn" colspan="2" style="text-align: center"><input type="Submit" id="submit" name="submit" value="Register"></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="div-delete-form">
+        
+        <form action="DeleteDataServlet" method="GET">
+            <table>
+                <caption>
+                    <h1>Delete User by Username</h1>
+                </caption>
+                <tr>
+                    <th>UserName: </th>
+                    <td><input type="text" name="uname"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th class="sumbitbtn"><input type="Submit" value="Register"></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
