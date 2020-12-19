@@ -110,8 +110,10 @@ public class DBHandler {
         try {
             PreparedStatement st = (PreparedStatement) conn.prepareStatement(deleteQuery);
             st.setString(1, username);
-            st.executeUpdate();
-            return "<h1>Delete user's("+username+") data successfully";
+            int result = st.executeUpdate();
+            if(result!=0){
+                return "<h1>Delete user's("+username+") data successfully"+result;
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
