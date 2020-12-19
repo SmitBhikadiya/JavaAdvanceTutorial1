@@ -72,7 +72,7 @@ public class DBHandler {
             // step-5 Close the connection
             closeConnection();
         }
-        return "<h1 class='errormsg'>Data failed to insert</h1>";
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Data failed to insert</h1>";
     }
     
     public static String update(UserDetailes obj){
@@ -91,15 +91,17 @@ public class DBHandler {
             st.setInt(3, age);
             st.setString(4, gender);
             st.setString(5, username);
-            st.executeUpdate();
-            return "<h1>Update user's("+username+") data successfully";
+            int result = st.executeUpdate();
+            if(result!=0){
+                return "<h1>Update user's("+username+") data successfully";
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
             closeConnection();
         }
-        return "<h1 class='errormsg'>Username not Found</h1>";
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Username not Found</h1>";
     }
     
     public static String delete(UserDetailes obj){
@@ -120,7 +122,7 @@ public class DBHandler {
         } finally{
             closeConnection();
         }
-        return "<h1 class='errormsg'>Username not found</h1>";
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Username not found</h1>";
     }
     
     public static String select(){
@@ -143,7 +145,6 @@ public class DBHandler {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        return "<h1 class='errormsg'> Not found any data </h1>"; 
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\"> Not found any data </h1>"; 
     }
 }
