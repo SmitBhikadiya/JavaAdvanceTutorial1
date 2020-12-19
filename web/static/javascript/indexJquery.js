@@ -23,6 +23,18 @@ $(Document).ready(function(){
         $(".form-div").append(ht);
         $("#submit").attr("value","Update");
     });
+    
+    $(".div-buttons").on("click", "#showData", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+        $(".form-div").html("");
+        $.ajax({
+            type: "POST",
+            url: "ShowDataServlet",
+            dataType: "text",
+            success: function(htm) {
+                $(".form-div").html(htm);
+            }
+        });
+    });
 });
 
 

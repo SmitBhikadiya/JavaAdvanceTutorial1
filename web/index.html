@@ -15,7 +15,9 @@ and open the template in the editor.
     <script type="text/javascript" src="static/javascript/indexJquery.js"></script>
     
     <style>
-
+        body{
+            background-color: rgb(50,0,0);
+        }
         th {
             text-align: left;
         }
@@ -30,6 +32,46 @@ and open the template in the editor.
         }
         .div-delete-form{
             display:none;
+        }
+        
+        .div-buttons{
+            margin:20px 0px;
+        }
+        textArea{
+            font-size: 25px;
+        }
+        input{
+            margin-left: 5px;
+            font-size: 30px;
+        }
+        
+        .div-buttons button, input[type=Submit]{
+            width:200px;
+            padding: 5px;
+            font-family: Kristen ITC;
+            font-size:15px;
+            background-color: black;
+            color: white;
+        }
+        
+        .form-div{
+            margin:0;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            margin-top: 10px;
+            display: inline-block;
+            box-sizing: border-box;
+            padding:10px;
+            background-color: white;
+            color: black;
+            font-size:25px;
+            box-shadow: 2px 2px 2px 2px black,4px 4px 4px 4px black;
+        }
+        .form-div:hover{
+            background-color: white;
+            color:black;
         }
 
         /*
@@ -59,11 +101,9 @@ and open the template in the editor.
         <button id="insertData">Insert Data</button>
         <button id="deleteData">Delete Data</button>
         <button id="updateData">Update Data</button>
-        <!--<form method="POST" action="ShowDataServlet">
-            <input type="submit" id="showData" value="ShowData">
-        </form>-->
+        <button id="showData">Show Data</button>
     </div>
-    <div class="form-div"></div>
+    <div class="form-div"><h1>First Tutorial</h1></div>
     <div class="div-register-form">
         
         <form action="NewUserServlet" method="POST">

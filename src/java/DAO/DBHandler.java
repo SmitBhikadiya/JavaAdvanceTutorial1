@@ -10,6 +10,7 @@ import com.mysql.jdbc.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pojo.UserDetailes;
@@ -63,7 +64,7 @@ public class DBHandler {
         
             //step-4 exceute query
             st.executeUpdate();
-            return "Data Inserted Successfully";
+            return "Data Inserted Successfully <br><a style=\"font-size:20px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>";
             
         } catch (SQLException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +73,7 @@ public class DBHandler {
             // step-5 Close the connection
             closeConnection();
         }
-        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Data failed to insert</h1>";
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Data failed to insert</h1><br><a style=\"font-size:20px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>";
     }
     
     public static String update(UserDetailes obj){
@@ -93,7 +94,7 @@ public class DBHandler {
             st.setString(5, username);
             int result = st.executeUpdate();
             if(result!=0){
-                return "<h1>Update user's("+username+") data successfully";
+                return "<h1>Update user's("+username+") data successfully <br><a style=\"font-size:20px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>";
             }
             
         } catch (SQLException ex) {
@@ -101,7 +102,7 @@ public class DBHandler {
         } finally{
             closeConnection();
         }
-        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Username not Found</h1>";
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Username not Found</h1><br><a style=\"font-size:20px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>";
     }
     
     public static String delete(UserDetailes obj){
@@ -114,7 +115,7 @@ public class DBHandler {
             st.setString(1, username);
             int result = st.executeUpdate();
             if(result!=0){
-                return "<h1>Delete user's("+username+") data successfully"+result;
+                return "<h1>Delete user's("+username+") data successfully"+result+"<br><a style=\"font-size:20px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>";
             }
             
         } catch (SQLException ex) {
@@ -122,10 +123,11 @@ public class DBHandler {
         } finally{
             closeConnection();
         }
-        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Username not found</h1>";
+        return "<h1 style=\"background-color:'red';color:white;padding:10px;\">Username not found</h1><br><a style=\"font-size:20px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>";
     }
     
-    public static String select(){
+    public static ArrayList select(){
+        ArrayList<String> list = new ArrayList<String>();
         String selectQuery = "SELECT * FROM tutorial1";
         String data = "";
         conn = establishConnection();
@@ -137,14 +139,17 @@ public class DBHandler {
             while(result.next()){
                 row = "\nName: "+result.getString("Username")+"\nAddress: "+result.getString("Address")+"\nAge: "+String.valueOf(result.getInt("Age"))+"\nGender: "+result.getString("Gender")+"\n\n\n";
                 data += row;
+                list.add(row);
             }
             
-            return data;
+            return list;
             
         } catch (SQLException ex) {
             Logger.getLogger(DBHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return "<h1 style=\"background-color:'red';color:white;padding:10px;\"> Not found any data </h1>"; 
+        list.add("<h1 style=\"background-color:'red';color:white;padding:10px;\"> Not found any data </h1><br><a style=\"text-decoration:none;font-size:15px;\" href=\"http://localhost:8080/Tutorial1/\">back</a>");
+        
+        return list; 
     }
 }
