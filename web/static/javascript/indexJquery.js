@@ -30,7 +30,16 @@ $(Document).ready(function(){
             type: "POST",
             url: "ShowDataServlet",
             dataType: "text",
+            // for asynk task
+            /*beforeSend: function(){
+                $(".loader").css("display","block");
+                alert();
+            },
+            complete: function(){
+                $(".loader").hide();
+            },*/
             success: function(htm) {
+                //$(".loader").css("display","none");
                 $(".form-div").html(htm);
             }
         });
